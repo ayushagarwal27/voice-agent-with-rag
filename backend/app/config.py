@@ -11,6 +11,8 @@ class Settings(BaseSettings):
 
     CHUNK_SIZE:int
     CHUNK_OVERLAP:int
+    VECTOR_INDEX_NAME:str = "vector_index"
+    DOCUMENT_CHUNKS_COLLECTION:str= "document_chunks"
     
     model_config = SettingsConfigDict(
         env_file=".env",
