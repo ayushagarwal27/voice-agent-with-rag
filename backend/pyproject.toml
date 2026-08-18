@@ -10,6 +10,7 @@ dependencies = [
     "langchain-text-splitters>=1.1.2",
     "loguru>=0.7.3",
     "motor>=3.7.1",
+    "pipecat-ai[deepgram,local-smart-turn-v3,openai,protobuf,silero-vad]>=0.0.100",
     "pydantic-settings>=2.15.0",
     "pymongo>=4.17.0",
     "pypdf>=6.16.1",
