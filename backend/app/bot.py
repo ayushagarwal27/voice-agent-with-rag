@@ -30,10 +30,10 @@ from pipecat.pipeline.task import PipelineParams, PipelineTask
 from pipecat.processors.aggregators.llm_context import LLMContext
 from pipecat.processors.aggregators.llm_response_universal import LLMContextAggregatorPair
 
-from pipecat.processors.frameworks.rtvi import RTVIConfig, RTVIObserver, RTVIProcessor
+from pipecat.processors.frameworks.rtvi import RTVIObserver, RTVIProcessor
 from pipecat.runner.types import RunnerArguments, WebSocketRunnerArguments
 from pipecat.serializers.protobuf import ProtobufFrameSerializer
-from pipecat.services.deepgram.stt import DeepgramSTTService
+from pipecat.services.deepgram.stt import LiveOptions
 from pipecat.services.cartesia.tts import CartesiaTTSService
 from pipecat.services.openai.llm import OpenAILLMService
 from pipecat.transports.base_transport import BaseTransport
@@ -43,7 +43,7 @@ from pipecat.transports.websocket.fastapi import (
 )
 
 from pipecat.processors.frameworks.rtvi import RTVIServerMessageFrame
-from deepgram import LiveOptions
+from pipecat.services.deepgram.stt import DeepgramSTTService
 from pipecat.adapters.schemas.function_schema import FunctionSchema
 from app.services.rag import RAGService
 from app.config import settings
@@ -87,7 +87,7 @@ async def run_bot(transport: BaseTransport, runner_args: RunnerArguments):
         live_options=live_options,
     )
 
-    rtvi = RTVIProcessor(config=RTVIConfig(config=[]))
+    rtvi = RTVIProcessor()
 
     async def search_knowledge_base(params: FunctionCallParams):
         try:
