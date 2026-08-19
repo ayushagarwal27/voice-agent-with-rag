@@ -189,8 +189,7 @@ async def upload_equipment_documents(
                             "chunk_id": str(uuid.uuid4()),
                             "chunk_index": index,
                             "text": chunk_text,
-                            "embedding": embedding_vector,
-                            "is_disabled": False,
+                            "embedding": embedding_vector
                         }
 
                         chunk_documents.append(chunk_doc)
@@ -291,8 +290,7 @@ async def list_equipment_documents(equipment_id: str):
         )
     
     documents = await db.documents_metadata.find({
-        "equipment_id": ObjectId(equipment_id),
-        "is_disabled": {"$ne": True}
+        "equipment_id": ObjectId(equipment_id)
     }).to_list(length=1000)
     
     # Convert ObjectId and datetime fields to strings for JSON serialization

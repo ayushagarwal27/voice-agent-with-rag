@@ -42,8 +42,6 @@ class RAGService:
 
             filters = {}
 
-            filters["is_disabled"] = {"$ne": True}
-
             if equipment_id:
                 try:
                     filters["equipment_id"] = ObjectId(equipment_id)
